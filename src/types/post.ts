@@ -1,11 +1,4 @@
-export interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  upvotes: number;
-  timestamp: string;
-  replies?: Comment[];
-}
+import type { Comment } from './comment';
 
 export interface Post {
   title: string;
@@ -13,5 +6,5 @@ export interface Post {
   content: string;
   upvotes: number;
   timestamp: string;
-  comments: Comment[];
+  comments?: Comment[];
 }
