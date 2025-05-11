@@ -60,7 +60,7 @@ export const CommentInput = ({
           <Button
             text={isSubComment ? "Cancel" : "Clear"}
             onClick={handleClear}
-            type="secondary"
+            variant="secondary"
             aria-label={isSubComment ? "Cancel reply" : "Clear comment"}
           />
           <Button

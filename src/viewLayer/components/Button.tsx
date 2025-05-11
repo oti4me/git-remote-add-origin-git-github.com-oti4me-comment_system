@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn";
 
 interface ButtonProps {
   text: string;
-  type?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary";
   disabled?: boolean;
   icon?: ReactNode;
   onClick?: () => void;
@@ -14,7 +14,7 @@ export const Button = ({
   onClick,
   disabled,
   icon,
-  type = "primary",
+  variant = "primary",
 }: ButtonProps) => {
   const buttonStyles = {
     primary:
@@ -29,7 +29,7 @@ export const Button = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={cn(buttonStyles[type], "inline-flex items-center gap-2")}
+      className={cn(buttonStyles[variant], "inline-flex items-center gap-2")}
     >
       {icon && <span className="flex items-center">{icon}</span>}
       {text}

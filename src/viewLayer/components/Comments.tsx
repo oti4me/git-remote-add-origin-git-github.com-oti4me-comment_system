@@ -36,14 +36,14 @@ export const Comments = ({ comment }: { comment: CommentType }) => {
           <div className="mt-2 flex space-x-4">
             <Button
               text="Reply"
-              type="tertiary"
+              variant="tertiary"
               onClick={toggleCommentInputVisibility}
               icon={<MessageCircleMore size={16} color="gray" />}
             />
             {isAuthenticated && (
               <Button
                 text="Delete"
-                type="tertiary"
+                variant="tertiary"
                 onClick={handleDelete}
                 icon={<Trash2 size={16} color="gray" />}
               />
