@@ -3,7 +3,7 @@ import { MessageCircleMore, Trash2 } from "lucide-react";
 import { Author } from "./Author";
 import { Button } from "./Button";
 import { CommentInput } from "./CommentInput";
-import type { Comment as CommentType } from "../../types/post";
+import type { Comment as CommentType } from "../../types";
 
 export const Comments = ({ comment }: { comment: CommentType }) => {
   const [expandedComments, setExpandedComments] = useState<number[]>([]);
