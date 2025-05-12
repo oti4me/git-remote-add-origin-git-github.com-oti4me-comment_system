@@ -1,43 +1,42 @@
 export const postSchema = {
-  title: 'post schema',
+  title: "post schema",
   version: 0,
-  description: 'describes a simple post',
-  primaryKey: 'id',
-  type: 'object',
+  description: "describes a simple post",
+  primaryKey: "id",
+  type: "object",
   properties: {
     id: {
-      type: 'string',
-      primary: true
+      type: "string",
+      maxLength: 100,
     },
     title: {
-      type: 'string'
+      type: "string",
     },
     content: {
-      type: 'string'
+      type: "string",
     },
     authorId: {
-      type: 'string'
+      type: "string",
+      maxLength: 100,
     },
     likeCount: {
-      type: 'integer',
+      type: "integer",
       minimum: 0,
-      default: 0
+      default: 0,
     },
     commentCount: {
-      type: 'integer',
+      type: "integer",
       minimum: 0,
-      default: 0
+      default: 0,
     },
     createdAt: {
-      type: 'string',
-      format: 'date-time'
+      type: "string",
+      maxLength: 100,
     },
     updatedAt: {
-      type: 'string',
-      format: 'date-time'
-    }
+      type: "string",
+    },
   },
-  required: ['id', 'title', 'content', 'authorId', 'createdAt', 'updatedAt'],
-  indexes: ['authorId', 'createdAt'],
-  keyCompression: true
+  required: ["id", "title", "content", "authorId", "createdAt", "updatedAt"],
+  indexes: ["authorId", "createdAt"],
 };
