@@ -12,6 +12,8 @@ const Post = ({ post }: { post: PostType }) => {
   const { addComment } = useAddComment();
 
   const handleAddComment = async (content: string) => {
+    if (!content) return;
+
     await addComment({
       id: uuidv4(),
       postId: post.id,

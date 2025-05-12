@@ -14,7 +14,7 @@ export const Author = ({ author, timestamp }: AuthorProps) => {
 
   return (
     <div className="mt-1 flex items-center space-x-2">
-      <CircleUserRound className="text-gray-500" size={24} aria-hidden="true" />
+      <CircleUserRound className="text-gray-500" size={24} aria-hidden="true" data-testid="author-icon" />
       <address className="text-sm font-medium text-gray-900 not-italic">
         {author}
       </address>
