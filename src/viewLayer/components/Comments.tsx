@@ -4,11 +4,16 @@ import { Author } from "./Author";
 import { Button } from "./Button";
 import { CommentInput } from "./CommentInput";
 import type { Comment as CommentType } from "../../types";
+import { useAddComment } from "../../serviceLayer";
+import { v4 as uuidv4 } from "uuid";
+import { useDeleteComment } from "../../serviceLayer/hooks/deleteComment.tsx";
 
 export const Comments = ({ comment }: { comment: CommentType }) => {
   const [expandedComments, setExpandedComments] = useState<number[]>([]);
   const [showCommentInput, setShowCommentInput] = useState<boolean>(false);
   const [isAuthenticated] = useState<boolean>(true);
+  const { addComment } = useAddComment();
+  const { deleteComment } = useDeleteComment();
 
   const toggleComment = (commentId: number) => {
     setExpandedComments((prev) =>
@@ -22,16 +27,25 @@ export const Comments = ({ comment }: { comment: CommentType }) => {
     setShowCommentInput((prev) => !prev);
   };
 
-  const handleDelete = () => {
-    // Handle delete logic here
-    console.log(`Deleting comment with ID: ${comment.id}`);
+  const handleDelete = async () => {
+    await deleteComment(comment.id);
+  };
+
+  const handleAddComment = async (content: string) => {
+    await addComment({
+      id: uuidv4(),
+      postId: comment.postId,
+      parentId: comment.id,
+      content,
+      authorId: comment.authorId,
+    });
   };
 
   return (
     <div className="mt-4 border-l-2 border-gray-200 pl-5">
       <div className="flex items-start space-x-2">
         <div className="flex-1">
-          <Author author={comment.author} timestamp={comment.timestamp} />
+          <Author author={comment.authorId} timestamp={comment.createdAt} />
           <p className="mt-1 text-gray-700">{comment.content}</p>
           <div className="mt-2 flex space-x-4">
             <Button
@@ -52,6 +66,7 @@ export const Comments = ({ comment }: { comment: CommentType }) => {
           <div>
             {showCommentInput && (
               <CommentInput
+                onSubmit={handleAddComment}
                 isSubComment
                 onClear={toggleCommentInputVisibility}
               />

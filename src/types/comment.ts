@@ -1,9 +1,10 @@
 export interface Comment {
-  id: number;
+  id: string;
   authorId: string;
-  parentId: string;
+  postId: string;
+  parentId: string | null;
   content: string;
-  createdAt: number;
-  updatedAt: string;
+  createdAt?: number;
+  updatedAt?: string;
   replies?: Comment[];
 }

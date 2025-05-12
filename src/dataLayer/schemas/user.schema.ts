@@ -1,41 +1,38 @@
 export const userSchema = {
-  title: 'user schema',
+  title: "user schema",
   version: 0,
-  description: 'Describes a user in the system',
-  primaryKey: 'id',
-  type: 'object',
+  description: "Describes a user in the system",
+  primaryKey: "id",
+  type: "object",
   properties: {
     id: {
-      type: 'string',
-      primary: true
+      type: "string",
+      maxLength: 100,
     },
     username: {
-      type: 'string',
-      minLength: 3
+      type: "string",
+      maxLength: 100,
+      minLength: 3,
     },
     email: {
-      type: 'string',
-      format: 'email'
+      type: "string",
+      maxLength: 100,
     },
     password: {
-      type: 'string',
-      minLength: 60
+      type: "string",
+      minLength: 4,
     },
     avatarUrl: {
-      type: 'string',
-      format: 'uri',
-      default: ''
+      type: "string",
+      default: "",
     },
     createdAt: {
-      type: 'string',
-      format: 'date-time'
+      type: "string",
     },
     updatedAt: {
-      type: 'string',
-      format: 'date-time'
-    }
+      type: "string",
+    },
   },
-  required: ['id', 'username', 'email', 'createdAt', 'updatedAt'],
-  indexes: ['id', 'username', 'email'],
-  keyCompression: true
+  required: ["id", "username", "email", "createdAt", "updatedAt"],
+  indexes: ["username", "email"],
 };
