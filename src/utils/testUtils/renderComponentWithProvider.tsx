@@ -1,0 +1,14 @@
+import { type ReactElement } from 'react';
+import { render, type RenderOptions } from '@testing-library/react';
+import { getMockProvider } from './mockProvider';
+
+export const renderComponentWithProvider = async (
+  ui: ReactElement,
+  renderOptions?: Omit<RenderOptions, 'queries'>
+) => {
+  const route = 'test route';
+  const wrapper = getMockProvider({ route });
+
+
+  return render(ui, { wrapper, ...renderOptions });
+};
